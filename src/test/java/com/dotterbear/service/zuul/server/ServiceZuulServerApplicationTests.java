@@ -1,4 +1,4 @@
-package com.dotterbear.service.config.server;
+package com.dotterbear.service.zuul.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
