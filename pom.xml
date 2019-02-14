@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>dotterear</groupId>
 	<artifactId>service-zuul-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>service-zuul-server</name>
 	<description>Service for zuul server</description>
 
