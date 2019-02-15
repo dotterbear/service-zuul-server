@@ -5,4 +5,6 @@ spring:
     name: service-zuul-server
   cloud:
     config:
-      uri: ENC(4Y69G6W/dqIxavdzLyOJqaFC4cpsEjqWeXYWlTXKOofBg7VA/vQW/g==)
+      discovery:
+        enabled: true
+        serviceId: service-config-server
