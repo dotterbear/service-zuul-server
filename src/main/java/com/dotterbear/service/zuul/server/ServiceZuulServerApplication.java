@@ -3,6 +3,10 @@ package com.dotterbear.service.zuul.server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @EnableZuulProxy
 @SpringBootApplication
@@ -12,14 +16,21 @@ public class ServiceZuulServerApplication {
     SpringApplication.run(ServiceZuulServerApplication.class, args);
   }
 
-//  @Bean
-//  public ServletRegistrationBean<HystrixMetricsStreamServlet> getServlet() {
-//    HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-//    ServletRegistrationBean<HystrixMetricsStreamServlet> registrationBean =
-//        new ServletRegistrationBean<>(streamServlet);
-//    registrationBean.setLoadOnStartup(1);
-//    registrationBean.addUrlMappings("/hystrix.stream");
-//    registrationBean.setName("HystrixMetricsStreamServlet");
-//    return registrationBean;
-//  }
+  @Bean
+  public CorsFilter corsFilter() {
+    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    final CorsConfiguration config = new CorsConfiguration();
+    config.setAllowCredentials(true);
+    config.addAllowedOrigin("*");
+    config.addAllowedHeader("*");
+    config.addAllowedMethod("OPTIONS");
+    config.addAllowedMethod("HEAD");
+    config.addAllowedMethod("GET");
+    config.addAllowedMethod("PUT");
+    config.addAllowedMethod("POST");
+    config.addAllowedMethod("DELETE");
+    config.addAllowedMethod("PATCH");
+    source.registerCorsConfiguration("/**", config);
+    return new CorsFilter(source);
+  }
 }
